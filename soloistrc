@@ -6,11 +6,19 @@ recipes:
 - sprout-base::homebrew
 - sprout-homebrew
 
-# settings
-- sprout-osx-settings
-- sprout-osx-settings::dock_preferences
-- sprout-terminal
-- sprout-terminal::update_font
+# 
+- sprout-osx-settings::defaults_fast_key_repeat_rate
+- sprout-osx-settings::function_keys
+- sprout-osx-settings::global_environment_variables
+- sprout-osx-settings::input_on_login
+- sprout-osx-settings::inputrc
+- sprout-osx-settings::keyboard
+- sprout-osx-settings::locate
+- sprout-osx-settings::menubar
+- sprout-osx-settings::shared_memory
+- sprout-osx-settings::sshd_on
+- sprout-osx-settings::tcp_keepalive
+- sprout-osx-settings::timemachine
 - sprout-ssh::known_hosts_github
 
 # development (general)
@@ -32,49 +40,41 @@ recipes:
 - sprout-osx-apps::shiftit
 
 # apps (editors)
-- sprout-osx-apps::textmate_bundles
-- sprout-osx-apps::textmate_preferences
-- sprout-osx-apps::macvim
-- sprout-rubymine
-
+#- sprout-osx-apps::textmate_bundles
+#- sprout-osx-apps::textmate_preferences
+#- sprout-osx-apps::macvim
+#- sprout-rubymine
+#
 node_attributes:
   sprout:
+    rbenv:
+      default_ruby: "2.1.5"
+      rubies:
+        1.9.3-p545: {}
+        2.0.0-p451: {}
+        2.1.5: {}
+        2.2.0: {}
     git:
-      domain: pivotallabs.com
+      domain: daveliebreich.com
       authors:
-        - initials: ah
-          name: Abhijit Hiremagalur
-          username: abhi
-        - initials: bc
-          name: Brian Cunnie
-          username: cunnie
-        - initials: jrhb
-          name: Jonathan Barnes
-        - initials: lw
-          name: Luke Winikates
-          username: lwinikates
+        - initials: dl
+          name: Dave Liebreich
+          username: dave
       projects:
         -
           name: sprout-wrap
           url: https://github.com/pivotal-sprout/sprout-wrap.git
-    terminal:
-      default_profile: 'Pro'
     settings:
-      clock_format: EEE MMM d  h:mm:ss a
-    dock_preferences:
-      orientation: 'left'
-      auto_hide: true
-      clear_apps: true
-      tile_size: 35
-      magnification': false
     homebrew:
       formulae:
-        - ctags-exuberant
+        - boot2docker
+        - s3cmd
+        - jq
         - ag
         - chromedriver
         - imagemagick
         - node
-        # - pstree # Skip until download url is fixed: https://github.com/Homebrew/homebrew/pull/35135
+        - pstree
         - qt
         - ssh-copy-id
         - tmux
@@ -83,17 +83,32 @@ node_attributes:
         - wget
         - rbenv-binstubs
         - rbenv-gem-rehash
+        - p7zip
       casks:
+        - caffeine
         - ccmenu
-        - firefox
         - gitx-rowanj
         - github
-        - google-chrome
-        - google-drive
-        - google-hangouts
-        - skype
-        - textmate
+        - iterm2
+        - java
+        - mou
         - vagrant
         - virtualbox
         - xquartz
         - xscope
+        - vlc
+        - rubymine
+  versions:
+    bash_it: HEAD
+
+  bash_it:
+    enabled_plugins:
+      aliases:
+      - general
+      - bundler
+      completion:
+      - defaults
+      - git
+      - ssh
+      plugins:
+      - ssh
