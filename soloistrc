@@ -37,7 +37,6 @@ recipes:
 # apps
 - sprout-osx-apps::iterm2
 - sprout-osx-apps::flycut
-- sprout-osx-apps::shiftit
 
 # apps (editors)
 #- sprout-osx-apps::textmate_bundles
@@ -84,6 +83,7 @@ node_attributes:
         - rbenv-binstubs
         - rbenv-gem-rehash
         - p7zip
+        - dos2unix
       casks:
         - caffeine
         - ccmenu
@@ -92,6 +92,7 @@ node_attributes:
         - iterm2
         - java
         - mou
+        - spectacle
         - vagrant
         - virtualbox
         - xquartz
